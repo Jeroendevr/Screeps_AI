@@ -2,12 +2,8 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder')
 var roleClass = require('role.class')
-var circle = require('testModule')
-
 
 module.exports.loop = function () {
-
-  circle.area(1)
 
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
@@ -16,7 +12,7 @@ module.exports.loop = function () {
         }
     }
 
-    var harvesters = roleClass.RoleManager.count
+    var harvesters = roleClass.RoleManager(countCreep)
 
     // if(harvesters.length < 2) {
     //     var newName = 'Harvester' + Game.time;

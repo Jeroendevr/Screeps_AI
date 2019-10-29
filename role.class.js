@@ -6,9 +6,10 @@ class RoleManager{
     this.count = 0
   }
 
-  count() {
+  countCreep() {
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    console.log('Harvesters: ' + harvesters.length);
+    this.count = harvesters.length
+    console.log('Harvesters: ' + this.count);
   }
 }
 
