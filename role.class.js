@@ -5,14 +5,17 @@ class RoleManager {
 
   constructor(role){
     this.role = role
-    this.count = 0
+    this.count = this.countCreep()
+    // console.log('RoleManager created')
   }
 
   countCreep() {
     var creep_with_role = _.filter(Game.creeps, (creep) => creep.memory.role == this.role);
-    this.count = harvesters.length
-    console.log('Harvesters: ' + this.count);
+    var creep_amount = creep_with_role.length
+    // console.log('Harvesters: ' + this.count);
+    return creep_amount
   }
+
 }
 
 module.exports = RoleManager
