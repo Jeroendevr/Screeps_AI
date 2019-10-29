@@ -12,7 +12,7 @@ module.exports.loop = function () {
         }
     }
 
-    var harvesters = roleClass.RoleManager(countCreep)
+    roleClass.RoleManager('harvester').countCreep()
 
     // if(harvesters.length < 2) {
     //     var newName = 'Harvester' + Game.time;
