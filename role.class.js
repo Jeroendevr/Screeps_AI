@@ -12,5 +12,4 @@ class RoleManager{
   }
 }
 
-
-module.exports = RoleManager()
+module.exports = {RoleManager: new RoleManager()}
