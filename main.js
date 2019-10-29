@@ -11,7 +11,7 @@ module.exports.loop = function () {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
-    var harvesterRoleManager = RoleManager('harvester')
+    var harvesterRoleManager = new RoleManager('harvester')
     var harvesters = harvesterRoleManager.countCreep()
 
     // if(harvesters.length < 2) {
