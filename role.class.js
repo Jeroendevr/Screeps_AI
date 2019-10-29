@@ -1,9 +1,9 @@
 //Creating a class to keep track of amount of roles deployed
 
-class RoleManager(role){
+class RoleManager {
   /** @param {string} role **/
 
-  constructor(role,count){
+  constructor(role){
     this.role = role
     this.count = 0
   }
@@ -15,4 +15,4 @@ class RoleManager(role){
   }
 }
 
-module.exports = {RoleManager: new RoleManager()}
+module.exports = RoleManager
