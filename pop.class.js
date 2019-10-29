@@ -3,7 +3,7 @@ class PopulationManager {
 
   }
 
-  spawn(){
+  spawn() {
     var newName = 'Harvester' + Game.time
     console.log('Spwaning new harvester: ' + newName)
     Game.spwans['Spwan1'].spawnCreep([WORK,CARRY,MOVE], newName,
