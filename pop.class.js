@@ -15,4 +15,4 @@ class PopulationManager {
 
 
 
-module.exports = {PopulationManager: new PopulationManager()}
+module.exports = new PopulationManager()
