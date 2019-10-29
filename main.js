@@ -17,7 +17,7 @@ module.exports.loop = function () {
     var builderRoleManager = new RoleManager('builder')
 
     if(harvesterRoleManager.count < 2) {
-      PopulationManager.spawn('harvester')
+      PopulationManager.spawn(harvesterRoleManager.role)
     }
 
 
