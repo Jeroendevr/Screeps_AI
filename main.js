@@ -1,7 +1,7 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder')
-var roleClass = require('role.class')
+var RoleManager = require('role.class')
 
 module.exports.loop = function () {
 
@@ -11,8 +11,8 @@ module.exports.loop = function () {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
-
-    roleClass.RoleManager('harvester').countCreep()
+    var harvesterRoleManager = new RoleManager('harvester')
+    var harvesters = harvesterRoleManager.countCreep()
 
     // if(harvesters.length < 2) {
     //     var newName = 'Harvester' + Game.time;
