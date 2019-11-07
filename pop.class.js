@@ -24,6 +24,7 @@ class PopulationManager {
     }
   }
 
+
   spawn(role) {
 
     switch (role) {
@@ -52,8 +53,14 @@ function newName(role){
   return role + Game.time
 }
 
-var role = new Map(
-  [1, 'harvester']
+var role = new Map([
+  [1, 'harvester'],
   [2, 'builder']
   //[3, 'upgrader']
+]
 )
+
+var role_amount = new Map([
+  ['harvester', 2],
+  ['builder', 1]
+])

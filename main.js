@@ -19,7 +19,8 @@ module.exports.loop = function () {
     if(harvesterRoleManager.count < 2) {
       PopulationManager.spawn(harvesterRoleManager.role)
     }
-
+    // TODO: let PopulationManager create builders
+    //PopulationManager.manage()
 
 
     for(var name in Game.creeps) {
