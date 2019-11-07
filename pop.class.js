@@ -25,22 +25,28 @@ class PopulationManager {
   }
 
   manage () {
+    if ( this.spawnAvailable) {
     // TODO p1: for every role if count is lower then number spawn.
-    val = role.values()
-    for ( var r in val ) {
-       console.log('Managing '+ r)
-       console.log(count_role(r) < role_amount.get(r) )      
+    var val = role.values()
+    for ( var r of val ) {
+       // console.log('Managing '+ r)
+       // console.log(this.count_role() < role_amount.get(r) )
+       if ( this.count_role(r) < role_amount.get(r) ){
+         this.spawn(r)
+       }
     }
 
-      // if ( count_role(r) <= wanted_role(r) ){
-      //   spawn(r)
-      // }
-
+  }
   }
 
   count_role (role) {
     // // TODO: iterate through all roles and count their numbers
-    return 0
+    switch (role) {
+      case 'harvester' :
+        return 2
+      default :
+        return 0
+    }
   }
 
   spawn(role) {
@@ -53,7 +59,9 @@ class PopulationManager {
         break
 
       case 'builder' :
-        console.log('Spwaning new builder: ' + newName(role))
+        console.log('Spawning new builder: ' + newName(role))
+        Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName(role),
+          {memory: {role: role}})
         break
 
       default:
