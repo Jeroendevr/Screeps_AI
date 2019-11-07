@@ -20,7 +20,7 @@ module.exports.loop = function () {
       PopulationManager.spawn(harvesterRoleManager.role)
     }
     // TODO: let PopulationManager create builders
-    //PopulationManager.manage()
+    // PopulationManager.manage()
 
 
     for(var name in Game.creeps) {

@@ -24,6 +24,20 @@ class PopulationManager {
     }
   }
 
+  manage () {
+    // TODO p1: for every role if count is lower then number spawn.
+    val = role.values()
+    for ( var r in val ) {
+       console.log('Managing '+ r)
+       console.log(count_role(r) < role_amount.get(r) )      
+    }
+
+      // if ( count_role(r) <= wanted_role(r) ){
+      //   spawn(r)
+      // }
+
+  }
+
   count_role (role) {
     // // TODO: iterate through all roles and count their numbers
     return 0
