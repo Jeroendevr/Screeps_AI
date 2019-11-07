@@ -51,3 +51,9 @@ module.exports = new PopulationManager()
 function newName(role){
   return role + Game.time
 }
+
+var role = new Map(
+  [1, 'harvester']
+  [2, 'builder']
+  //[3, 'upgrader']
+)
