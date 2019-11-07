@@ -24,6 +24,10 @@ class PopulationManager {
     }
   }
 
+  count_role (role) {
+    // // TODO: iterate through all roles and count their numbers
+    return 0
+  }
 
   spawn(role) {
 
