@@ -50,18 +50,18 @@ class PopulationManager {
   spawn(role) {
     switch (role) {
       case 'harvester' :
-        console.log('Spawning new harvester: ' + newName(role))
         if ( Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName(role),
           {dryRun: true} ) == OK ) {
+            console.log('Spawning new harvester: ' + newName(role))
             Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName(role),
               {memory: {role: role}} )
           }
         break
 
       case 'builder' :
-        console.log('Spawning new builder: ' + newName(role))
         if( Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName(role),
           {dryRun: true} ) == OK  ) {
+            console.log('Spawning new builder: ' + newName(role))
             Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName(role),
               {memory: {role: role}})
           }
