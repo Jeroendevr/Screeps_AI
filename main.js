@@ -7,6 +7,9 @@ var PopulationManager = require('pop.class')
 module.exports.loop = function () {
 
     for(var name in Memory.creeps) {
+      // NOTE:  Checks for every creep in memory compare it to live and spawning creep then delete
+      var creep = Game.creeps[name]
+      console.log(Creep.spawning == true);
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
             console.log('Clearing non-existing creep memory:', name);
@@ -16,9 +19,6 @@ module.exports.loop = function () {
     var harvesterRoleManager = new RoleManager('harvester')
     var builderRoleManager = new RoleManager('builder')
 
-    if(harvesterRoleManager.count < 2) {
-      PopulationManager.spawn(harvesterRoleManager.role)
-    }
 
     PopulationManager.manage()
 
