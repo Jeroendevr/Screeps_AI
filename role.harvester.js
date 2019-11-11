@@ -1,5 +1,5 @@
 var roleHarvester = {
-  // NOTE: Define behaviour of the harvester class
+
     /** @param {Creep} creep **/
     run: function(creep) {
 	    if(creep.store.getFreeCapacity() > 0) {
