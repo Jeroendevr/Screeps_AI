@@ -4,6 +4,7 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder')
 var RoleManager = require('role.class')
 var PopulationManager = require('population_manager')
+var BuildingPlanner = require('building.class')
 var testModule = require('testModule')
 
 module.exports.loop = function () {
