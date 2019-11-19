@@ -1,3 +1,5 @@
+const CB('Spawn1')  = require('Creep.Body')
+
 class PopulationManager {
 
   constructor () {
@@ -73,18 +75,24 @@ class PopulationManager {
 
       case 'soldier':
         // soldier is spawnAvailable then spawns
-        // TODO: create a abstraction of the dryRun
         const body = body_parts.get('zwaard')
         if (this._spawn_able(body) ) {
           Game.spawns['Spawn1'].spawnCreep(body, newName(role),
             {memory: {role: role}} )
         }
+
+        case 'upgrader' :
+
         break
       default:
         console.log("no role found for " + role)
       }
 
     }
+    _dry_run() {
+      // TODO 2 : Create abstraction of body_parts based on roles
+    }
+
     _spawn_able(body) {
       if ( Game.spawns['Spawn1'].spawnCreep(body, 'spawn_able',
         {dryRun: true} ) == OK) {
@@ -92,7 +100,6 @@ class PopulationManager {
         }
     }
 }
-
 
 module.exports = new PopulationManager()
 
@@ -113,10 +120,12 @@ var role_amount = new Map([
   // NOTE: Map with the preferred amount of creeps per role
   ['harvester', 2],
   ['builder', 1],
-  ['soldier', 1]
+  ['soldier', 1],
+  ['upgrader',1]
 ])
 
 var body_parts = new Map([
+  // TODO: 4 Create a bodyparts class
   ['default',[WORK,CARRY,MOVE]],
   ['zwaard',[MOVE,MOVE,ATTACK,TOUGH,TOUGH]]
 ])

@@ -18,9 +18,6 @@ module.exports.loop = function () {
         }
     }
 
-    var harvesterRoleManager = new RoleManager('harvester')
-    var builderRoleManager = new RoleManager('builder')
-
     PopulationManager.manage()
     // NOTE: testModule is for testing purposes the normal population manager is should be decommented
     // testModule.spawn('soldier')
