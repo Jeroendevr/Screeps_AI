@@ -1,4 +1,4 @@
-const CB('Spawn1')  = require('Creep.Body')
+const CB  = require('Creep.Body')
 
 class PopulationManager {
 
