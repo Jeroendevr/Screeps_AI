@@ -4,6 +4,8 @@ class PopulationManager {
 
   constructor () {
     this.spawnAvailable = this._checkAvailable()
+    this.SPAWN = 'Spawn1'
+    this.ROOMCONTROL_LVL = Game.spawns[this.SPAWN].room.controller.level
   }
 
   _checkAvailable () {
@@ -28,12 +30,31 @@ class PopulationManager {
       const pos_roles = role.values()
       for ( var r of pos_roles ) {
         // For each role possible chech the amount of those roles wanted, if wanted then spawn
-        if ( this.count_role(r) < role_amount.get(r) ) {
+        if ( this.count_role(r) < this._role_amount(r) ) {
+          // console.log(r);
           this.spawn(r)
           break
         }
       }
     }
+  }
+
+  _role_amount (role) {
+    const ROLE_AMOUNT = new Map([
+      ['harvester',[2,2]],
+      ['builder',[0,1]],
+      ['upgrader', [1,2]],
+      ['soldier',[1,1]]
+
+    ])
+    if ( ROLE_AMOUNT.has(role) === true) {
+        const ROLE_ARRAY = ROLE_AMOUNT.get(role)
+        return ROLE_ARRAY[this.ROOMCONTROL_LVL - 1]
+    }
+    else {
+      console.log('No amounts defined for role ' + role);
+    }
+
   }
 
   count_role (role) {
@@ -54,7 +75,7 @@ class PopulationManager {
   }
 
   spawn(role) {
-    let body
+    let body = []
     switch (role) {
       case 'harvester' :
         if ( Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName(role),
@@ -85,7 +106,7 @@ class PopulationManager {
 
         case 'upgrader' :
           body = CB.parts(role)
-          // console.log(body);
+          // console.log('This is a body array' + body);
           if (this._spawn_able(body) ) {
             Game.spawns['Spawn1'].spawnCreep(body, newName(role),
               {memory: {role: role}} )
@@ -124,13 +145,14 @@ var role = new Map([
 ]
 )
 
-var role_amount = new Map([
-  // NOTE: Map with the preferred amount of creeps per role
-  ['harvester', 2],
-  ['builder', 1],
-  ['soldier', 1],
-  ['upgrader',1]
-])
+// var role_amount = new Map([
+//   // NOTE: Map with the preferred amount of creeps per role
+//   ['harvester', 2],
+//   ['builder', 1],
+//   ['soldier', 1],
+//   ['upgrader',1]
+// ])
+
 
 var body_parts = new Map([
   // TODO: 4 Create a bodyparts class

@@ -12,7 +12,14 @@ class CreepBody {
     parts(role) {
       switch (role) {
         case 'upgrader' :
-          return body_upgrader.get(this.ROOMCONTROL)
+          if (body_upgrader.has(this.ROOMCONTROL) === true) {
+              return body_upgrader.get(this.ROOMCONTROL)
+          }
+          else {
+            console.log('Could not found parts for role ' + role + ' Matching level '
+              + this.ROOMCONTROL);
+          }
+
           break
         default:
           console.log("No parts found for role "+ role);
@@ -23,5 +30,11 @@ class CreepBody {
 module.exports = new CreepBody()
 
 const body_upgrader = new Map([
-  [1,[WORK,CARRY,CARRY,CARRY,MOVE]]
+  [1,[WORK,CARRY,CARRY,CARRY,MOVE]],
+  [2,[WORK,CARRY,CARRY,MOVE]]
+])
+
+const body_soldier = new Map([
+  [1,[[MOVE,ATTACK,ATTACK,TOUGH,TOUGH]]],
+  [2,[[]]]
 ])
