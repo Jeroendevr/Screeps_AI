@@ -54,6 +54,7 @@ class PopulationManager {
   }
 
   spawn(role) {
+    let body
     switch (role) {
       case 'harvester' :
         if ( Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName(role),
@@ -75,13 +76,20 @@ class PopulationManager {
 
       case 'soldier':
         // soldier is spawnAvailable then spawns
-        const body = body_parts.get('zwaard')
+        body = body_parts.get('zwaard')
         if (this._spawn_able(body) ) {
           Game.spawns['Spawn1'].spawnCreep(body, newName(role),
             {memory: {role: role}} )
         }
+        break
 
         case 'upgrader' :
+          body = CB.parts(role)
+          // console.log(body);
+          if (this._spawn_able(body) ) {
+            Game.spawns['Spawn1'].spawnCreep(body, newName(role),
+              {memory: {role: role}} )
+          }
 
         break
       default:

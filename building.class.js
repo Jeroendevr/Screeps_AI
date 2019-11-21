@@ -15,7 +15,7 @@ class BuildingPlanner {
     // TODO: place extensions around spawns
     for (const i in Game.spawns) {
       const spwn = Game.spawns[i]
-      console.log(spwn.pos.y - 3);
+      // console.log(spwn.pos.y - 3);
       spwn.room.createConstructionSite(spwn.pos.x + 5, spwn.pos.y, STRUCTURE_EXTENSION)
     }
   }
