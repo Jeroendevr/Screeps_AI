@@ -1,5 +1,5 @@
 var roleBuilder = {
-
+ 
     /** @param {Creep} creep **/
     run: function(creep) {
 

@@ -1,4 +1,4 @@
-class testModule {
+class testModule { 
     manage () {
       if ( this.spawnAvailable ) {
         const pos_roles = role.values()

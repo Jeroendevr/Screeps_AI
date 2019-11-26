@@ -1,5 +1,5 @@
 const CB  = require('Creep.Body')
-
+ 
 class PopulationManager {
 
   constructor () {
