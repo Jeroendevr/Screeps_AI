@@ -6,7 +6,8 @@ class CreepBody {
     this.spawn = 'Spawn1'
     // this.ROOMCONTROL = Game.spawns[this.spawn].room.controller.level()
     // console.log('Room control level is '+ Game.spawns[this.spawn].room.controller.level);
-    this.ROOMCONTROL = Game.spawns[this.spawn].room.controller.level
+    this.SPAWN_ENERGY = Game.spawns[this.spawn].room.store.getCapacity(RESOURCE_ENERGY)
+    console.log(this.SPAWN_ENERGY);
     }
 
     parts(role) {
