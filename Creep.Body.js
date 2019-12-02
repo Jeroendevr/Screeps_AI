@@ -22,6 +22,7 @@ class CreepBody {
         case 'upgrader' :
           body_upgrader.forEach(fill_body_arr)
           console.log('The body part list is ' + BODY_ARR)
+          return BODY_ARR
           break
         default:
           console.log("No parts found for role "+ role);
