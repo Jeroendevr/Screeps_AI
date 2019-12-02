@@ -44,20 +44,37 @@ class PopulationManager {
       ['builder',[0,1,1]],
       ['upgrader', [1,2,2]],
       ['soldier',[1,1,1]]
-
     ])
-    if ( ROLE_AMOUNT.has(role) === true) {
-        const ROLE_ARRAY = ROLE_AMOUNT.get(role)
-        return ROLE_ARRAY[this.ROOMCONTROL_LVL - 1]
+
+    switch (role) {
+      case 'builder':
+        this._builder_amount()
+        break
+      default:
+        if ( ROLE_AMOUNT.has(role) === true) {
+            const ROLE_ARRAY = ROLE_AMOUNT.get(role)
+            return ROLE_ARRAY[this.ROOMCONTROL_LVL - 1]
+        }
+        else {
+          console.log('No amounts defined for role ' + role);
+        }
+      }
     }
-    else {
-      console.log('No amounts defined for role ' + role);
-    }
-  }
 
   _builder_amount() {
-    CONSTRUCTION_SITES = _.filter(Game.rooms[Game.spawns[this.SPAWN]])
-    return CONSTRUCTION_SITES.length
+    // If there is a construction site return amount if there is none return 0
+    const CONSTRUCTION_SITES = _.filter(Game.rooms[Game.spawns[this.SPAWN]]).length
+    if (isNaN(CONSTRUCTION_SITES)) {
+      console.log('builder amount cannot compute construction sites');
+    }
+    else {
+      if (CONSTRUCTION_SITES === 0) {
+        return 0
+      }
+      else {
+        return 1
+      }
+    }
   }
 
   count_role (role) {
