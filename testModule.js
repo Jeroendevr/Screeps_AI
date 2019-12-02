@@ -1,18 +1,46 @@
-
-
 class testModule {
-  calc () {
-    const waarde = 100
-    const dert = 30
+    manage () {
+      if ( this.spawnAvailable ) {
+        const pos_roles = role.values()
+        for ( var r of pos_roles ) {
+          // For each role possible chech the amount of those roles wanted, if wanted then spawn
+          if ( this.count_role(r) < role_amount.get(r) ) {
+            this.spawn(r)
+            break
+          }
+        }
+      }
+    }
 
-    console.log(Math.floor(waarde / dert));
-  }
+    spawn(role) {
+      switch (role) {
+        case 'soldier':
+          // soldier is spawnAvailable then spawns
+          // TODO: create a abstraction of the dryRun
+          const body = body_parts.get('zwaard')
+          if (this._spawn_able(body) ) {
+            Game.spawns['Spawn1'].spawnCreep(body, newName(role),
+              {memory: {role: role}} )
+          }
+          break
+        default:
+          console.log("no role found for " + role)
+        }
 
-  multiply_array() {
-    let arr = [1]
-    let full_arr = arr.concat(arr)
-    console.log(full_arr);
+      }
 
+      _spawn_able(body) {
+        if ( Game.spawns['Spawn1'].spawnCreep(body, 'spawn_able',
+          {dryRun: true} ) == OK) {
+              return true
+          }
+      }
+
+  builder_amount() {
+    const CONSTRUCTION_SITES = _.filter(Game.rooms[Game.spawns[this.SPAWN]])
+    console.log( CONSTRUCTION_SITES.length)
   }
 }
+
+
 module.exports = new testModule()

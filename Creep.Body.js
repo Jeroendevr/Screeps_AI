@@ -3,61 +3,53 @@ class CreepBody {
     // NOTE: Class for organizing bodypart arrays
     // When exporting
     constructor () {
-      this.spawn = 'Spawn1'
-      this.SPAWN_ENERGY = Game.spawns[this.spawn].store.getCapacity(RESOURCE_ENERGY)
-      // console.log("The amount of energy for this spawn is " + this.SPAWN_ENERGY);
+    this.spawn = 'Spawn1'
+    // this.ROOMCONTROL = Game.spawns[this.spawn].room.controller.level()
+    // console.log('Room control level is '+ Game.spawns[this.spawn].room.controller.level);
+    this.SPAWN_ENERGY = Game.spawns[this.spawn].store.getCapacity(RESOURCE_ENERGY)
+    console.log("The amount of energy for this spawn is " + this.SPAWN_ENERGY);
+
     }
 
     parts(role) {
+      let BODY_ARR
+      console.log("Searching parts for role " + role);
+      function fill_body_arr(value, key, map) {
+        console.log(key);
+        BODY_ARR += key
+      }
+
+      body_upgrader.forEach(fill_body_arr)
+
+
       switch (role) {
         case 'upgrader' :
-          let BODY_ARR = Array()
-          function fill_body_arr(value, key, map) {
-            while (value >= 1 ) {
-              BODY_ARR.push(key)
-              value -= 1
-            }
+          let BODY_ARR = []
+          for (var key in body_upgrader.keys()) {
+            BODY_ARR += key
+            console.log(BODY_ARR);
           }
-          body_upgrader.forEach(fill_body_arr)
-
-          let i = 0
-          let full_arr = []
-          do {
-            i ++
-            full_arr = full_arr.concat(BODY_ARR)
-          } while ( i < this._amount_copies(BODY_ARR) )
-
-          return full_arr
+          // if (body_upgrader.has(this.ROOMCONTROL) === true) {
+          //     return body_upgrader.get(this.ROOMCONTROL)
+          // }
+          // else {
+          //   console.log('Could not found parts for role ' + role + ' Matching level '
+          //     + this.ROOMCONTROL);
+          // }
 
           break
         default:
           console.log("No parts found for role "+ role);
       }
+
     }
-
-    _amount_copies(arr) {
-      const waarde = this._creep_cost(arr)
-      const copies = Math.floor(this.SPAWN_ENERGY / waarde)
-      return copies
-    }
-
-    _creep_cost(BODY_ARR) {
-        let total_cost = 0
-
-        function calc_total(value, index, object) {
-          total_cost += BODYPART_COST[value]
-        }
-
-        BODY_ARR.forEach(calc_total)
-        return total_cost
-      }
-}
+  }
 module.exports = new CreepBody()
 
 const body_upgrader = new Map([
   // NOTE: Body parts as keys, ratio as numbers
   [MOVE, 1],
-  [CARRY, 2],
+  [CARRY, 1],
   [WORK, 1]
   // [1,[WORK,CARRY,CARRY,CARRY,MOVE]],
   // [2,[WORK,CARRY,CARRY,MOVE]]

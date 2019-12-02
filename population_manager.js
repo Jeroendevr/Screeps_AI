@@ -1,5 +1,5 @@
 const CB  = require('Creep.Body')
- 
+
 class PopulationManager {
 
   constructor () {
@@ -31,7 +31,6 @@ class PopulationManager {
       for ( var r of pos_roles ) {
         // For each role possible chech the amount of those roles wanted, if wanted then spawn
         if ( this.count_role(r) < this._role_amount(r) ) {
-          // console.log(r);
           this.spawn(r)
           break
         }
@@ -41,10 +40,10 @@ class PopulationManager {
 
   _role_amount (role) {
     const ROLE_AMOUNT = new Map([
-      ['harvester',[2,2]],
-      ['builder',[0,1]],
-      ['upgrader', [1,2]],
-      ['soldier',[1,1]]
+      ['harvester',[2,2,2]],
+      ['builder',[0,1,1]],
+      ['upgrader', [1,2,2]],
+      ['soldier',[1,1,1]]
 
     ])
     if ( ROLE_AMOUNT.has(role) === true) {
@@ -54,7 +53,11 @@ class PopulationManager {
     else {
       console.log('No amounts defined for role ' + role);
     }
+  }
 
+  _builder_amount() {
+    CONSTRUCTION_SITES = _.filter(Game.rooms[Game.spawns[this.SPAWN]])
+    return CONSTRUCTION_SITES.length
   }
 
   count_role (role) {
@@ -104,13 +107,13 @@ class PopulationManager {
         }
         break
 
-        case 'upgrader' :
-          body = CB.parts(role)
-          // console.log('This is a body array' + body);
-          if (this._spawn_able(body) ) {
-            Game.spawns['Spawn1'].spawnCreep(body, newName(role),
-              {memory: {role: role}} )
-          }
+      case 'upgrader' :
+        body = CB.parts(role)
+        // console.log('This is a body array' + body);
+        if (this._spawn_able(body) ) {
+          Game.spawns['Spawn1'].spawnCreep(body, newName(role),
+            {memory: {role: role}} )
+        }
 
         break
       default:
@@ -118,6 +121,7 @@ class PopulationManager {
       }
 
     }
+
     _dry_run() {
       // TODO 2 : Create abstraction of body_parts based on roles
     }
@@ -142,17 +146,7 @@ var role = new Map([
   [2, 'builder'],
   [3, 'upgrader'],
   [4, 'soldier']
-]
-)
-
-// var role_amount = new Map([
-//   // NOTE: Map with the preferred amount of creeps per role
-//   ['harvester', 2],
-//   ['builder', 1],
-//   ['soldier', 1],
-//   ['upgrader',1]
-// ])
-
+])
 
 var body_parts = new Map([
   // TODO: 4 Create a bodyparts class
