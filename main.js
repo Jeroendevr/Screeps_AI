@@ -20,7 +20,7 @@ module.exports.loop = function () {
 
     PopulationManager.manage()
     // NOTE: testModule is for testing purposes the normal population manager is should be decommented
-    testModule.calc()
+    // testModule.multiply_array()
     // BuildingPlanner.plan()
     BuildingPlanner.plan()
 

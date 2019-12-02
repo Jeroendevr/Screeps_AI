@@ -19,14 +19,26 @@ class CreepBody {
             }
           }
           body_upgrader.forEach(fill_body_arr)
-          const copies_of_body_arr_possible = 0
-          return BODY_ARR
+
+          let i = 0
+          let full_arr = []
+          do {
+            i ++
+            full_arr = full_arr.concat(BODY_ARR)
+          } while ( i < this._amount_copies(BODY_ARR) )
+
+          return full_arr
 
           break
         default:
           console.log("No parts found for role "+ role);
       }
+    }
 
+    _amount_copies(arr) {
+      const waarde = this._creep_cost(arr)
+      const copies = Math.floor(this.SPAWN_ENERGY / waarde)
+      return copies
     }
 
     _creep_cost(BODY_ARR) {
