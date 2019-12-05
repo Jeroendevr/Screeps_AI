@@ -46,7 +46,7 @@ class PopulationManager {
 
     switch (role) {
       case 'builder':
-        this._builder_amount()
+        return this._builder_amount()
         break
       default:
         if ( ROLE_AMOUNT.has(role) === true) {
@@ -67,11 +67,13 @@ class PopulationManager {
 
   _builder_amount() {
     // If there is a construction site return amount if there is none return 0
-    const CONSTRUCTION_SITES = _.filter(Game.rooms[Game.spawns[this.SPAWN]]).length
+    const CONSTRUCTION_SITES = (_.filter(Game.spawns['Spawn1'].room.find(FIND_MY_CONSTRUCTION_SITES))).length;
+    console.log('amount of construction sites is ' + CONSTRUCTION_SITES)
     if (isNaN(CONSTRUCTION_SITES)) {
       console.log('builder amount cannot compute construction sites');
     }
     else {
+      // console.log(CONSTRUCTION_SITES);
       if (CONSTRUCTION_SITES === 0) {
         return 0
       }
@@ -88,14 +90,12 @@ class PopulationManager {
       case 'harvester' :
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == role);
         return harvesters.length
-      case 'builder' :
-        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == role);
-        return builders.length
       default :
         const count = _.filter(Game.creeps, (creep) => creep.memory.role == role).length
+        // console.log('returning ' + role + ' with ' + count);
           return count
-        console.log('could not find '+ role + ' to count');
-    }
+        }
+      console.log('could not find '+ role + ' to count');
   }
 
   spawn(role) {
