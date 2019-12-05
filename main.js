@@ -20,11 +20,8 @@ module.exports.loop = function () {
 
     PopulationManager.manage()
     // NOTE: testModule is for testing purposes the normal population manager is should be decommented
-    testModule.builder_amount()
-    // BuildingPlanner.plan()
+    // testModule.builder_amount()
     BuildingPlanner.plan()
-
-
 
     for(var name in Game.creeps) {
       // NOTE: Create check if creep is in game

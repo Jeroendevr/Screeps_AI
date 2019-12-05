@@ -35,16 +35,6 @@ class testModule {
               return true
           }
       }
-
-  builder_amount() {
-    const CONSTRUCTION_SITES = _.filter(Game.rooms[Game.spawns[this.SPAWN]]).length
-    if (isNaN(CONSTRUCTION_SITES)) {
-      console.log('builder amount cannot compute construction sites');
-    }
-    else {
-      console.log( CONSTRUCTION_SITES )
-    }
-  }
 }
 
 

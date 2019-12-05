@@ -17,7 +17,6 @@ class PopulationManager {
             Game.spawns['Spawn1'].pos.x + 1,
             Game.spawns['Spawn1'].pos.y,
             {align: 'left', opacity: 0.8});
-
         return false
     }
     else {
@@ -41,7 +40,6 @@ class PopulationManager {
   _role_amount (role) {
     const ROLE_AMOUNT = new Map([
       ['harvester',[2,2,2]],
-      ['builder',[0,1,1]],
       ['upgrader', [1,2,2]],
       ['soldier',[1,1,1]]
     ])
@@ -53,7 +51,13 @@ class PopulationManager {
       default:
         if ( ROLE_AMOUNT.has(role) === true) {
             const ROLE_ARRAY = ROLE_AMOUNT.get(role)
-            return ROLE_ARRAY[this.ROOMCONTROL_LVL - 1]
+            //todo first check for size of the defined array
+            if (ROLE_ARRAY => ROOMCONTROL_LVL) {
+              return ROLE_ARRAY[this.ROOMCONTROL_LVL - 1]
+            }
+            else {
+              console.log('There is no amount of creeps defined for this role ' + role );
+            }
         }
         else {
           console.log('No amounts defined for role ' + role);
