@@ -13,7 +13,7 @@ class CreepBody {
 
     parts(role) {
       let BODY_ARR = []
-      console.log("Searching parts for role " + role);
+      // console.log("Searching parts for role " + role);
       function fill_body_arr(value, key, map) {
         BODY_ARR.push(key)
       }
@@ -21,7 +21,7 @@ class CreepBody {
       switch (role) {
         case 'upgrader' :
           body_upgrader.forEach(fill_body_arr)
-          console.log('The body part list is ' + BODY_ARR)
+          // console.log('The body part list is ' + BODY_ARR)
           return BODY_ARR
           break
         default:

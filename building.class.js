@@ -2,8 +2,6 @@ const SM = require('manager_spawn');
 const utils = require('code_utils')
 
 class BuildingPlanner {
-// TODO: create a function to plann extensions
-// TODO: create a function to layout a certain pattern
 
   plan() {
     this._plan_extension()
@@ -20,8 +18,8 @@ class BuildingPlanner {
          for(var x of utils.range(spawn.pos.x-radius, spawn.pos.x+radius+1)){
              for(var y of utils.range(spawn.pos.y-radius, spawn.pos.y+radius+1)){
                  if(this._checkSurroundingsForClear(x, y, 1, spawn.room)){
-                     // console.log("Spawning building site at:",x,y)
-                     // console.log(spawn.room.createConstructionSite(x, y, STRUCTURE_EXTENSION))
+                     console.log("Spawning building site at:",x,y)
+                     console.log(spawn.room.createConstructionSite(x, y, STRUCTURE_EXTENSION))
                      return
                  }
              }

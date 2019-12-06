@@ -68,7 +68,6 @@ class PopulationManager {
   _builder_amount() {
     // If there is a construction site return amount if there is none return 0
     const CONSTRUCTION_SITES = (_.filter(Game.spawns['Spawn1'].room.find(FIND_MY_CONSTRUCTION_SITES))).length;
-    console.log('amount of construction sites is ' + CONSTRUCTION_SITES)
     if (isNaN(CONSTRUCTION_SITES)) {
       console.log('builder amount cannot compute construction sites');
     }

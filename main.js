@@ -6,6 +6,8 @@ var RoleManager = require('role.class')
 var PopulationManager = require('population_manager')
 var BuildingPlanner = require('building.class')
 var testModule = require('testModule')
+// const RoomManager = require('Managers/manager_room')
+
 
 module.exports.loop = function () {
 
