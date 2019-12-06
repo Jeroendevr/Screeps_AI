@@ -6,4 +6,11 @@
  * var mod = require('buildings.class');
  * mod.thing == 'a thing'; // true
  */
- 
+
+ Magenta color - walking back to base no purpose #ff40ff
+
+Buildings
+Base -  Moving 🏘
+
+Action
+🔄 harvest

@@ -1,5 +1,5 @@
 class RoomManager() {
-  
+
 }
 
-module.exports = RoomManager();
+module.exports = new RoomManager();
