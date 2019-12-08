@@ -21,29 +21,31 @@ module.exports.loop = function () {
     }
 
     PopulationManager.manage()
-    // NOTE: testModule is for testing purposes the normal population manager is should be decommented
-    // testModule.builder_amount()
     BuildingPlanner.plan()
 
     for(var name in Game.creeps) {
       // NOTE: Create check if creep is in game
         var creep = Game.creeps[name];
         if (!creep.spawning){
-          if(creep.memory.role == 'harvester') {
-              roleHarvester.run(creep);
-          }
-          if(creep.memory.role == 'builder') {
-              roleBuilder.run(creep);
-          }
-          if(creep.memory.role == 'upgrader') {
-              roleUpgrader.run(creep);
-          }
           switch (creep.memory.role) {
-            case 'soldier' :
-              roleSoldier.run(creep)
+              case 'builder' :
+                roleBuilder.run(creep)
+                break
+              case 'harvester' :
+              roleHarvester.run(creep)
               break
-          }
+              case 'soldier' :
+                roleSoldier.run(creep)
+                break
+              case 'upgrader' :
+                roleUpgrader.run(creep)
+                break
+            case 'BETA' :
+                testModule.list_sources(creep)
+                break
+            default :
+                console.log('Could not find  role defined for ' + creep);
+            }
         }
-
     }
 }

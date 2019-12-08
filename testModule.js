@@ -1,15 +1,13 @@
 class testModule {
-    manage () {
-      if ( this.spawnAvailable ) {
-        const pos_roles = role.values()
-        for ( var r of pos_roles ) {
-          // For each role possible chech the amount of those roles wanted, if wanted then spawn
-          if ( this.count_role(r) < role_amount.get(r) ) {
-            this.spawn(r)
-            break
-          }
-        }
-      }
+    list_sources(creep) {
+
+        const sources = creep.room.find(FIND_SOURCES)
+        const source_id = sources[0].id
+        console.log('The possible sources are ' + sources)
+        creep.memory.source_id = source_id
+        console.log('Source ID is ' + source_id);
+        console.log('Current position ' + creep.pos );
+
     }
 
     spawn(role) {

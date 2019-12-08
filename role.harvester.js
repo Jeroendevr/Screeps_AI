@@ -10,7 +10,7 @@ class roleHarvester {
     this._find_targets(creep)
     if (!creep.memory.harvesting && creep.store[RESOURCE_ENERGY] == 0) {
         creep.memory.harvesting = true
-        creep.memory.mijn = this._energy_source()
+        // creep.memory.mijn = this._energy_source()
         creep.say('🔄 harvest')
     }
     else if (creep.memory.harvesting && creep.store.getFreeCapacity() == 0) {
@@ -18,10 +18,8 @@ class roleHarvester {
         creep.say('🚛 Energy')
     }
 
-
     if(creep.store.getFreeCapacity() > 0) {
       // If capacity available keep harvesting
-
         var sources = creep.room.find(FIND_SOURCES);
         if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
               creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
